@@ -1,3 +1,16 @@
-<div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
-  <h1 class="text-xl font-bold text-gray-900"> {{ title }} </h1>
+<div class="flex flex-col p-8 rounded-lg w-2/3 bg-yellow-100">
+
+  <h1 class="text-lg font-extrabold"> {{ title }} </h1>
+
+  <p class="text-sm mb-3 text-gray-600"> {{ postDate | date:'short' }} </p>
+
+  <div class="h-[250px] overflow-hidden mb-4 bg-blue-400">
+    <img
+    class="w-full"
+    src={{img}} alt="">
+  </div>
+
+  <p class="text-md"> {{ content }} </p>
+
+  <div class="w-full bg-black mt-6 h-[1px]"></div>
 </div>
