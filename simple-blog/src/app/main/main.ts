@@ -3,6 +3,8 @@ import { BlogPostCard } from '../blog-post-card/blog-post-card';
 import { AddPosts } from '../add-posts/add-posts';
 import { NgFor } from '@angular/common';
 import { AuthorCard } from '../author-card/author-card';
+import { LastpostsCard } from '../lastposts-card/lastposts-card';
+import { LastpostContainer } from '../lastpost-container/lastpost-container';
 
 interface Post {
   title: string;
@@ -14,10 +16,11 @@ interface Post {
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [BlogPostCard, AddPosts, AuthorCard, NgFor],
+  imports: [BlogPostCard, AddPosts, AuthorCard, LastpostsCard, LastpostContainer, NgFor],
   templateUrl: './main.html',
   styleUrl: './main.css'
 })
+
 export class Main {
   posts = signal<Post[]>([
     {
@@ -44,3 +47,4 @@ export class Main {
     this.posts.update(currentPosts => [newPost, ...currentPosts])
   }
 }
+

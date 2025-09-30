@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let post of lastFivePosts">
+        <div class="border-b pb-2 mb-2 border-black">
+            <p class="font-normal"> {{ post.title }} </p>
+            <p class="font-light"> {{ post.postDate | date:'mediumDate' }} </p>
+        </div>
+    </li>
+</ul>

@@ -1,8 +1,9 @@
 <div class="grid grid-cols-4 gap-2 bg-green-300">
     <!-- <blog-add-posts (newPost)="addNewPost($event)"> </blog-add-posts> -->
 
-    <div class="col-span-1 bg-yellow-400">
+    <div class="col-span-1 h-auto bg-yellow-400">
       <app-author-card></app-author-card>
+      <app-lastposts-card [posts]="posts()"></app-lastposts-card>
     </div>
 
     <div class="col-span-3 p-2 bg-blue-600">
