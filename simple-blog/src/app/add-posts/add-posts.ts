@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup} from '@angular/forms'; 
 
 @Component({
@@ -9,10 +9,13 @@ import { FormBuilder, Validators, ReactiveFormsModule, FormGroup} from '@angular
 })
 
 export class AddPosts {
+
 // obtendo instância
   private fb = inject(FormBuilder);
 
   newPost = output<{title: string, img: string, content: string}>();
+
+  closeModal = output<void>();
 
   postForm = this.fb.nonNullable.group({
     title: ['', Validators.required],
@@ -34,4 +37,10 @@ export class AddPosts {
       this.postForm.markAllAsTouched();
     }
   }
+
+    onCancel() {
+    this.postForm.reset({title: '', img: '', content: ''});
+    this.closeModal.emit();
+  }
+
 }

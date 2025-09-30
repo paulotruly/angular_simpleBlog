@@ -1,22 +1,41 @@
-<div class="grid grid-cols-4 gap-2 bg-green-300">
-    <!-- <blog-add-posts (newPost)="addNewPost($event)"> </blog-add-posts> -->
+  <div class="flex flex-row items-center justify-between px-7 bg-purple-200 w-full h-[100px]">
+    <h1 class="text-[40px] font-extrabold"> Blog Angular </h1>
+    <button
+    (click)="openAddPostModal()"
+    class="bg-green-600 p-4 rounded-lg"> Adicionar posts </button>
+  </div>
 
-    <div class="col-span-1 h-auto bg-yellow-400">
-      <app-author-card></app-author-card>
-      <app-lastposts-card [posts]="posts()"></app-lastposts-card>
-    </div>
+  <div *ngIf="isAddingPost()" class="fixed inset-0 backdrop-blur-sm bg-black/50 flex justify-center items-center">
+      <blog-add-posts
+      (newPost)="addNewPost($event)"
+      (closeModal)="closeAddPostModal()"
+      class="w-full"
+      >
+      </blog-add-posts>
+  </div>
 
-    <div class="col-span-3 p-2 bg-blue-600">
-      <div class="flex flex-col">
-        <ng-container *ngFor="let post of posts()">
-          <app-blog-post-card
-          class="flex my-3 justify-center items-center"
-          [title]="post.title"
-          [content]="post.content"
-          [img]="post.img"
-          >
-          </app-blog-post-card>
-        </ng-container>
+  <div class="grid grid-cols-4 gap-2 bg-green-300">
+
+      <div class="col-span-1 h-auto bg-yellow-400">
+        <app-author-card></app-author-card>
+        <app-lastposts-card [posts]="posts()"></app-lastposts-card>
       </div>
-    </div>
-</div>
+
+      <div class="col-span-3 p-2 bg-blue-600">
+        <div class="flex flex-col">
+          <ng-container *ngFor="let post of posts()">
+            <app-blog-post-card
+            class="flex my-3 justify-center items-center"
+            [title]="post.title"
+            [content]="post.content"
+            [img]="post.img"
+            >
+            </app-blog-post-card>
+          </ng-container>
+        </div>
+      </div>
+  </div>
+
+  <div class="flex w-full h-auto px-4 py-5 bg-purple-700">
+    Projeto de blog desenvolvido como exercício prático de front-end. Construído com Angular (v17+) e Tailwind CSS, focado na prática de componentes standalone, signals e reactive forms. Este projeto foi finalizado em 30/09/2025.
+  </div>

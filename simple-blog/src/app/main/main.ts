@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { BlogPostCard } from '../blog-post-card/blog-post-card';
 import { AddPosts } from '../add-posts/add-posts';
-import { NgFor } from '@angular/common';
+import { NgFor, CommonModule } from '@angular/common';
 import { AuthorCard } from '../author-card/author-card';
 import { LastpostsCard } from '../lastposts-card/lastposts-card';
 import { LastpostContainer } from '../lastpost-container/lastpost-container';
@@ -16,12 +16,15 @@ interface Post {
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [BlogPostCard, AddPosts, AuthorCard, LastpostsCard, LastpostContainer, NgFor],
+  imports: [BlogPostCard, AddPosts, AuthorCard, LastpostsCard, LastpostContainer, CommonModule, NgFor],
   templateUrl: './main.html',
   styleUrl: './main.css'
 })
 
 export class Main {
+
+  isAddingPost = signal<boolean>(false);
+
   posts = signal<Post[]>([
     {
       title: 'The revolution of independent sound taking over the music scene',
@@ -37,6 +40,14 @@ export class Main {
     }
   ]);
 
+  openAddPostModal() {
+    this.isAddingPost.set(true);
+  }
+
+  closeAddPostModal() {
+    this.isAddingPost.set(false);
+  }
+
   // método pra adicionar uma postagem que recebe o evento do addposts
   addNewPost(newPostData: {title: string, img: string, content: string}) {
     const newPost: Post = {
@@ -45,6 +56,7 @@ export class Main {
     }
 
     this.posts.update(currentPosts => [newPost, ...currentPosts])
+    this.closeAddPostModal();
   }
 }
 
