@@ -2,6 +2,8 @@
 
 Desenvolvimento de um blog simples com **Angular**, com o objetivo principal de praticar e consolidar conhecimentos na criação de aplicações front-end usando o framework.
 
+![Preview do blog](./imagem.png)
+
 ## Tecnologias utilizadas
 
 - Angular
